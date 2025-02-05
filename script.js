@@ -10,7 +10,7 @@ function getWeather() {
     return;
   }
 
-  // Step 1: Get the latitude and longitude of the city
+  // Get the latitude and longitude of the city
   const geoUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${API_KEY}`;
 
   fetch(geoUrl)
@@ -25,7 +25,7 @@ function getWeather() {
       const lat = geoData[0].lat;
       const lon = geoData[0].lon;
 
-      // Step 2: Get the weather data using the latitude and longitude
+      // weather data using the latitude and longitude
       const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
 
       return fetch(weatherUrl);
@@ -41,46 +41,61 @@ function getWeather() {
 }
 
 function displayWeather(data) {
-  const weatherInfoDiv = document.getElementById("getWeather");
+  // const weatherInfoDiv = document.getElementById("getWeather");
 
-  // Extract the city name, latitude, longitude, temperature, and description
+  // Extract the city name,temperature, and description
   const cityName = data.name;
-  const latitude = data.coord.lat;
-  const longitude = data.coord.lon;
   const temperature = data.main.temp;
   const description = data.weather[0].description;
+  const mainCondition = data.weather[0].main;
 
-  // Set weather icon based on the weather condition
-  if (data.weather[0].main == "Clouds") {
-    weatherIcon.src = "https://cdn-icons-png.flaticon.com/512/7774/7774417.png";
-  } else if (data.weather[0].main == "Clear") {
-    weatherIcon.src =
-      "https://static-00.iconduck.com/assets.00/clear-day-icon-1024x1024-exbd0lm2.png";
-  } else if (data.weather[0].main == "Mist") {
-    weatherIcon.src =
-      "https://cdn3d.iconscout.com/3d/premium/thumb/weather-6546350-5376613.png";
-  } else if (data.weather[0].main == "Snow") {
-    weatherIcon.src =
-      "https://static.vecteezy.com/system/resources/previews/022/287/856/original/3d-rendering-snowy-weather-icon-3d-render-snow-with-cloud-icon-snowfall-png.png";
-  } else if (data.weather[0].main == "Smoke") {
-    weatherIcon.src =
-      "https://cdn3d.iconscout.com/3d/premium/thumb/smoke-5175068-4328031.png";
-  } else if (data.weather[0].main == "Rain") {
-    weatherIcon.src =
-      "https://static.vecteezy.com/system/resources/previews/024/825/182/non_2x/3d-weather-icon-day-with-rain-free-png.png";
-  } else if (data.weather[0].main == "Drizzle") {
-    weatherIcon.src =
-      "https://www.freeiconspng.com/thumbs/cloud-rain-icons/cloud-rain-weather-icon-25.png";
+  document.querySelector(".city").innerHTML = data.name;
+  document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°C";
+  document.querySelector(".description").innerHTML =
+    data.weather[0].description;
+
+  // Set weather icon based on the main weather condition
+  switch (mainCondition) {
+    case "Clouds":
+      weatherIcon.src =
+        "https://cdn-icons-png.flaticon.com/512/7774/7774417.png";
+      break;
+    case "Clear":
+      weatherIcon.src =
+        "https://static-00.iconduck.com/assets.00/clear-day-icon-1024x1024-exbd0lm2.png";
+      break;
+    case "Mist":
+      weatherIcon.src =
+        "https://cdn3d.iconscout.com/3d/premium/thumb/weather-6546350-5376613.png";
+      break;
+    case "Snow":
+      weatherIcon.src =
+        "https://static.vecteezy.com/system/resources/previews/022/287/856/original/3d-rendering-snowy-weather-icon-3d-render-snow-with-cloud-icon-snowfall-png.png";
+      break;
+    case "Smoke":
+      weatherIcon.src =
+        "https://cdn3d.iconscout.com/3d/premium/thumb/smoke-5175068-4328031.png";
+      break;
+    case "Rain":
+      weatherIcon.src =
+        "https://static.vecteezy.com/system/resources/previews/024/825/182/non_2x/3d-weather-icon-day-with-rain-free-png.png";
+      break;
+    case "Drizzle":
+      weatherIcon.src =
+        "https://www.freeiconspng.com/thumbs/cloud-rain-icons/cloud-rain-weather-icon-25.png";
+      break;
+    default:
+      weatherIcon.src =
+        "https://static-00.iconduck.com/assets.00/clear-day-icon-1024x1024-exbd0lm2.png"; // Default to clear sky icon
+      break;
   }
 
   // Display weather details
   const weatherHtml = `
     <h2>${cityName}</h2>
-    <p>Latitude: ${latitude}</p>
-    <p>Longitude: ${longitude}</p>
     <p>Temperature: ${temperature}°C</p>
     <p>Description: ${description}</p>
   `;
 
-  weatherInfoDiv.innerHTML = weatherHtml;
+  weatherHtml.innerHTML = weatherHtml;
 }
