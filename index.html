@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather Dashboard</title>
-    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="styles.css" />
   </head>
 
   <body>
@@ -12,9 +12,35 @@
       <h1>Weather Dashboard</h1>
       <div class="input-section">
         <input type="text" id="city" placeholder="Enter city name" required />
-        <button id="getWeather">Get Weather</button>
+        <button onclick="getWeather()" id="getWeather">Get Weather</button>
+        <div id="weatherResult" class="weather-result">
+          <div class="weather">
+            <img
+              class="weather-icon"
+              src="https://static.vecteezy.com/system/resources/previews/024/825/182/non_2x/3d-weather-icon-day-with-rain-free-png.png"
+              alt="..."
+              width="20px"
+            />
+            <h1 class="temp">15°C</h1>
+            <h2 class="city">New York</h2>
+            <div class="details">
+              <div style="display: flex" class="col">
+                <!-- <img class="humi" src="https://static-00.iconduck.com/assets.00/humidity-icon-2048x1675-xxsge5os.png" width="20px"> -->
+                <!-- <div class="info">
+              <p class="humidity">50%</p>
+              <p>Humidity</p>
+            </div> -->
+              </div>
+              <!-- <div class="col">
+            <img src="https://cdn-icons-png.flaticon.com/512/136/136712.png" width="20px"> -->
+              <div class="info">
+                <p class="wind">15 km/h</p>
+                <p>Wind Speed</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div id="weatherResult" class="weather-result"></div>
     </div>
 
     <script src="./assets/js/script.js"></script>
