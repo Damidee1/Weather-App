@@ -1,5 +1,7 @@
 const API_KEY = "f23ee9deb4e1a7450f3157c44ed020e1";
 const weatherIcon = document.querySelector(".weather-icon");
+const searchButton = document.getElementById("getWeather");
+const cityInput = document.getElementById("city");
 
 function getWeather() {
   const cityInput = document.getElementById("city");
@@ -99,3 +101,7 @@ function displayWeather(data) {
 
   weatherHtml.innerHTML = weatherHtml;
 }
+// searchButton.addEventListener("click", () => {
+//   displayWeather(cityInput.value);
+// });
+// displayWeather();
