@@ -3,56 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Weather Dashboard</title>
+    <title>Weather App</title>
+    <script defer src="script.js"></script>
+    <script defer src="choose_icon.js"></script>
     <link rel="stylesheet" href="styles.css" />
   </head>
-
   <body>
-    <!-- KSE START weather-icon for top right of screen -->
-
-     <!-- KSE test bit-->
-     <!--<div id="data-container">Waiting for data...</div>
-     <div id="weather-icon-boxr">
-      <img id="weather-icon" src="" alt="Status Icon" style="display: none; width: 50px;">
-    </div>
-
-     <div id="icon-container"></div>
-  -->
-     <!-- KSE end test-->
-
-    <div class="top-right-box">
-      <div class="weather-icon-box">
-        <img src="./sun-icon.png" id="weather-icon" alt="weather icon"/>
-      </div>
-    </div>
-    <div class="top-left-box">
-      <div class="branding">
-        <p id="logo">Guru Gods</p>
-        <p id="strapline">Whatever the weather, have a great day!</p>
-      </div>
-    </div>
-    <!-- KSE END -->
-    <div class="weather-dashboard">
-      <h1>Weather Dashboard</h1>
-
-      <div class="input-section">
-        <label for="city">City Name:</label>
-        <input type="text" id="city" placeholder="Enter city name" required />
+    <div class="container">
+      <h1 class="title">Weather App</h1>
+      <div class="search-box">
+        <input type="text" id="city" placeholder="Enter city name" />
         <button id="getWeather">Get Weather</button>
-        <p id="errorMessage" class="error-message"></p> <!-- Error message -->
       </div>
-
-      <div id="weatherResult" class="weather-result"></div>
-      <div id="forecastResult" class="forecast-result"></div> <!-- Forecast section -->
+      <p id="errorMessage" class="error"></p>
+      <div id="weatherResult" class="weather-card"></div>
+      <div id="forecastResult" class="forecast-container"></div>
     </div>
-    <!-- KSE footer -->
-    <div class="bottom-box">
-      <p id="copyright">
-        Copyright 2025 Guru Gods
-      </p>
-    </div>
-    <!-- <script src="choose_icon.js"></script> -->
-    <!-- KSE END -->
-    <script src="script.js"></script>
   </body>
 </html>
