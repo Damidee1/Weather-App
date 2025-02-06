@@ -1,13 +1,103 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f0f8ff;
+  background-color: #f0f8ff; 
   margin: 0;
   padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  /* KSE */
+  position: relative;   /* This allows absolute positioning relative to the body */
+  /* END KSE */
+
+  /* KSE add background image */
+  background-image: url('./weather-background.jpg');  
+  background-size: cover;       /* Make the image cover the whole page */
+  background-position: center;  /* Center the image */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  /* END KSE */
 }
+
+/* KSE added to contain the weather-icon-box */
+/* Top-Right Box (Layered) */
+.top-right-box {
+  position: absolute;           /* Removes it from normal document flow */
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+  /*background: #333;*/
+  background: transparent;  
+  padding: 0; /* 10px 20px;*/
+  border-radius: none; /* 8px;*/
+  color: white;
+  z-index: 10;               /* Make sure it's above other content */
+}
+
+.top-right-box div {
+  /* background: #555; */
+  background: transparent;
+  padding: 0; /* 8px 12px; */
+  border-radius: none; /* 4px; */
+}
+
+.top-left-box {
+  position: absolute;           /* Removes it from normal document flow */
+  top: 20px;
+  left: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 2vw;
+  gap: 10px;
+  /*background: #333;*/
+  background: transparent;  
+  padding: 0; /* 10px 20px;*/
+  border-radius: none; /* 8px;*/
+  color: white;
+  z-index: 10;               /* Make sure it's above other content */
+}
+
+#logo {
+  font-size: 3vw;
+  font-weight: bold;
+  padding: 4px;
+
+}
+
+@media (max-width: 768px) { /* For tablets */
+  .top-right-box img {
+      width: 15vw;
+  }
+}
+
+@media (max-width: 480px) { /* For mobile devices */
+  .top-right-box img {
+      width: 10vw;
+      min-width: 40px; /* Adjust minimum size for tiny screens */
+  }
+}
+
+/* KSE only use if choose_icon.js does not work */
+/* Use sun image as default */
+/* Rotate transformation */
+weather-icon-box:hover {
+  transition: 100s ease-out;
+  transform: rotate(360deg);
+}
+
+/* KSE do not want to make body's flex-direction vertical in case it conflict with Dami's changes. */
+.bottom-box {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;                 /* Center it horizontally */
+  transform: translateX(-50%); /* Shift it back by half its width for perfect centering */
+  display: flex;
+  align-items: flex-end; /* align copyright notice and strapline at bottom of container */
+  gap: 10px;
+}
+
+/* END KSE */
 
 .weather-dashboard {
   background-color: #fff;
