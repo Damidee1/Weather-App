@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather Dashboard</title>
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="styles.css" />
   </head>
 
   <body>
@@ -34,11 +34,16 @@
     <!-- KSE END -->
     <div class="weather-dashboard">
       <h1>Weather Dashboard</h1>
+
       <div class="input-section">
+        <label for="city">City Name:</label>
         <input type="text" id="city" placeholder="Enter city name" required />
         <button id="getWeather">Get Weather</button>
+        <p id="errorMessage" class="error-message"></p> <!-- Error message -->
       </div>
+
       <div id="weatherResult" class="weather-result"></div>
+      <div id="forecastResult" class="forecast-result"></div> <!-- Forecast section -->
     </div>
     <!-- KSE footer -->
     <div class="bottom-box">
