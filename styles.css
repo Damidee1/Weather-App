@@ -1,26 +1,21 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f0f8ff;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  /* KSE */
-  position: relative; /* This allows absolute positioning relative to the body */
-  /* END KSE */
-
-  /* KSE add background image */
+  background: linear-gradient(to right, #2193b0, #6dd5ed);
+  color: white;
+  text-align: center;
+  padding: 20px;
   background-image: url("./weather-background.jpg");
   background-size: cover; /* Make the image cover the whole page */
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Prevent the image from repeating */
-  /* END KSE */
+}
+.top-right-box div {
+  /* background: #555; */
+  background: transparent;
+  padding: 0; /* 8px 12px; */
+  border-radius: none; /* 4px; */
 }
 
-/* KSE added to contain the weather-icon-box */
-/* Top-Right Box (Layered) */
 .top-right-box {
   position: absolute; /* Removes it from normal document flow */
   top: 20px;
@@ -34,36 +29,6 @@ body {
   color: white;
   z-index: 10; /* Make sure it's above other content */
 }
-
-.top-right-box div {
-  /* background: #555; */
-  background: transparent;
-  padding: 0; /* 8px 12px; */
-  border-radius: none; /* 4px; */
-}
-
-.top-left-box {
-  position: absolute; /* Removes it from normal document flow */
-  top: 20px;
-  left: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  font-size: 2vw;
-  gap: 10px;
-  /*background: #333;*/
-  background: transparent;
-  padding: 0; /* 10px 20px;*/
-  border-radius: none; /* 8px;*/
-  color: white;
-  z-index: 10; /* Make sure it's above other content */
-}
-
-#logo {
-  font-size: 3vw;
-  font-weight: bold;
-  padding: 4px;
-}
-
 @media (max-width: 768px) {
   /* For tablets */
   .top-right-box img {
@@ -79,7 +44,6 @@ body {
   }
 }
 
-/* KSE only use if choose_icon.js does not work */
 /* Use sun image as default */
 /* Rotate transformation */
 weather-icon-box:hover {
@@ -87,7 +51,6 @@ weather-icon-box:hover {
   transform: rotate(360deg);
 }
 
-/* KSE do not want to make body's flex-direction vertical in case it conflict with Dami's changes. */
 .bottom-box {
   position: absolute;
   bottom: 20px;
@@ -99,44 +62,56 @@ weather-icon-box:hover {
   align-items: flex-end; /* align copyright notice and strapline at bottom of container */
   gap: 10px;
 }
-
-/* END KSE */
-
-.weather-dashboard {
-  background-color: #fff;
+.container {
+  max-width: 500px;
+  margin: auto;
+  background: rgba(255, 255, 255, 0.1);
   padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  width: 300px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
-
-.input-section {
+.title {
+  font-size: 2rem;
+}
+.search-box {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
   margin-bottom: 20px;
 }
 input {
   padding: 10px;
-  width: 70%;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-right: 10px;
-}
-button {
-  padding: 10px 15px;
-  background-color: #007bff;
-  color: white;
   border: none;
   border-radius: 5px;
+  width: 70%;
+}
+button {
+  padding: 10px;
+  border: none;
+  background: #ff9800;
+  color: white;
+  border-radius: 5px;
   cursor: pointer;
+  transition: 0.3s;
 }
 button:hover {
-  background-color: #0056b3;
+  background: #e68900;
 }
-
-.weather-result {
+.weather-card {
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  margin-top: 15px;
+}
+.forecast-container {
   margin-top: 20px;
 }
-
-.weather-result p {
+.forecast-day {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 10px;
   margin: 10px 0;
+  border-radius: 8px;
+}
+.error {
+  color: #ffcccb;
 }
